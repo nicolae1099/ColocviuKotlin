@@ -98,6 +98,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(messageBroadcastReceiver)
+    }
+
+    override fun onDestroy() {
+        val intent = Intent(this, PracticalTest01Service::class.java)
+        stopService(intent)
+        super.onDestroy()
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
